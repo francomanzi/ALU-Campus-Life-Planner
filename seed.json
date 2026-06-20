@@ -1,0 +1,111 @@
+[
+  {
+    "id": "rec_0001_1727600000000",
+    "description": "Calculus study session",
+    "duration": 2.5,
+    "tag": "Study",
+    "date": "2025-09-29",
+    "createdAt": "2025-09-29T08:00:00.000Z",
+    "updatedAt": "2025-09-29T08:00:00.000Z"
+  },
+  {
+    "id": "rec_0002_1727520000000",
+    "description": "Chemistry lab report write-up",
+    "duration": 3,
+    "tag": "Study",
+    "date": "2025-09-28",
+    "createdAt": "2025-09-28T14:00:00.000Z",
+    "updatedAt": "2025-09-28T14:00:00.000Z"
+  },
+  {
+    "id": "rec_0003_1727433600000",
+    "description": "Morning yoga and stretching",
+    "duration": 1,
+    "tag": "Sport",
+    "date": "2025-09-27",
+    "createdAt": "2025-09-27T07:00:00.000Z",
+    "updatedAt": "2025-09-27T07:00:00.000Z"
+  },
+  {
+    "id": "rec_0004_1727347200000",
+    "description": "Student council meeting",
+    "duration": 1.5,
+    "tag": "Event",
+    "date": "2025-09-26",
+    "createdAt": "2025-09-26T16:00:00.000Z",
+    "updatedAt": "2025-09-26T16:00:00.000Z"
+  },
+  {
+    "id": "rec_0005_1727260800000",
+    "description": "Coffee with study group",
+    "duration": 0.75,
+    "tag": "Social",
+    "date": "2025-09-25",
+    "createdAt": "2025-09-25T10:30:00.000Z",
+    "updatedAt": "2025-09-25T10:30:00.000Z"
+  },
+  {
+    "id": "rec_0006_1727174400000",
+    "description": "Physics lecture review",
+    "duration": 2,
+    "tag": "Class",
+    "date": "2025-09-24",
+    "createdAt": "2025-09-24T09:00:00.000Z",
+    "updatedAt": "2025-09-24T09:00:00.000Z"
+  },
+  {
+    "id": "rec_0007_1727088000000",
+    "description": "Basketball practice session",
+    "duration": 1.5,
+    "tag": "Sport",
+    "date": "2025-09-23",
+    "createdAt": "2025-09-23T17:00:00.000Z",
+    "updatedAt": "2025-09-23T17:00:00.000Z"
+  },
+  {
+    "id": "rec_0008_1727001600000",
+    "description": "Library orientation event",
+    "duration": 0.5,
+    "tag": "Event",
+    "date": "2025-09-22",
+    "createdAt": "2025-09-22T11:00:00.000Z",
+    "updatedAt": "2025-09-22T11:00:00.000Z"
+  },
+  {
+    "id": "rec_0009_1726915200000",
+    "description": "Group project planning",
+    "duration": 2,
+    "tag": "Study",
+    "date": "2025-09-21",
+    "createdAt": "2025-09-21T13:00:00.000Z",
+    "updatedAt": "2025-09-21T13:00:00.000Z"
+  },
+  {
+    "id": "rec_0010_1726828800000",
+    "description": "Career fair attendance",
+    "duration": 3.5,
+    "tag": "Event",
+    "date": "2025-09-20",
+    "createdAt": "2025-09-20T10:00:00.000Z",
+    "updatedAt": "2025-09-20T10:00:00.000Z"
+  },
+  {
+    "id": "rec_0011_1726742400000",
+    "description": "History essay first draft",
+    "duration": 4,
+    "tag": "Study",
+    "date": "2025-09-19",
+    "createdAt": "2025-09-19T15:00:00.000Z",
+    "updatedAt": "2025-09-19T15:00:00.000Z"
+  },
+  {
+    "id": "rec_0012_1726656000000",
+    "description": "Campus volunteer tour guide",
+    "duration": 2.5,
+    "tag": "Event",
+    "date": "2025-09-18",
+    "createdAt": "2025-09-18T09:00:00.000Z",
+    "updatedAt": "2025-09-18T09:00:00.000Z"
+  }
+]
+

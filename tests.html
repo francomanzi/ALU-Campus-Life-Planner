@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campus Life Planner — Tests</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 1.5rem; max-width: 700px; margin: 0 auto; }
+    h1   { margin-bottom: 0.5rem; }
+    p.summary { font-weight: 700; font-size: 1.1rem; margin-bottom: 1.25rem; }
+    .pass { color: #1e8a4c; }
+    .fail { color: #c0392b; }
+    .test { font-size: 0.9rem; padding: 0.2rem 0; border-bottom: 1px solid #eee; }
+    h2   { margin: 1.5rem 0 0.5rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; color: #555; }
+    a    { color: #2980b9; }
+  </style>
+</head>
+<body>
+  <h1>Test Suite</h1>
+  <p><a href="index.html">← Back to app</a></p>
+  <div id="output"></div>
+
+  <script type="module">
+    import { madridValidate, madridDuplicateWords, madridNotAllDigits } from './validators.js';
+    import { juventusCompile, juventusHighlight } from './search.js';
+
+    const results = [];
+
+    function test(label, passed) {
+      results.push({ label, passed });
+    }
+
+    // ── Description validation ────────────────────
+    test('Valid description passes',            madridValidate('description', 'Calculus study') === null);
+    test('Leading space fails',                 madridValidate('description', ' bad start')     !== null);
+    test('Trailing space fails',                madridValidate('description', 'bad end ')       !== null);
+    test('Empty description fails',             madridValidate('description', '')               !== null);
+    test('All-digits description fails',        madridValidate('description', '12345')          !== null);
+    test('Mixed text+digits passes',            madridValidate('description', 'Study 101')      === null);
+
+    // ── Duration validation ───────────────────────
+    test('Valid duration 1.5 passes',           madridValidate('duration', '1.5')               === null);
+    test('Valid duration 0 passes',             madridValidate('duration', '0')                 === null);
+    test('Valid duration 10 passes',            madridValidate('duration', '10')                === null);
+    test('Negative number fails',               madridValidate('duration', '-1')                !== null);
+    test('Letters fail as duration',            madridValidate('duration', 'abc')               !== null);
+    test('Three decimal places fail',           madridValidate('duration', '1.500')             !== null);
+    test('Leading zero (01) fails',             madridValidate('duration', '01')                !== null);
+
+    // ── Date validation ───────────────────────────
+    test('Valid date 2025-09-29 passes',        madridValidate('date', '2025-09-29')            === null);
+    test('Month 13 fails',                      madridValidate('date', '2025-13-01')            !== null);
+    test('Day 00 fails',                        madridValidate('date', '2025-09-00')            !== null);
+    test('Wrong format (DD/MM/YYYY) fails',     madridValidate('date', '29/09/2025')            !== null);
+
+    // ── Tag validation ────────────────────────────
+    test('Valid tag "Study" passes',            madridValidate('tag', 'Study')                  === null);
+    test('Valid tag "Cross-Country" passes',    madridValidate('tag', 'Cross-Country')          === null);
+    test('Valid tag "Group Study" passes',      madridValidate('tag', 'Group Study')            === null);
+    test('Numbers in tag fail',                 madridValidate('tag', 'Tag123')                 !== null);
+    test('Trailing hyphen fails',               madridValidate('tag', 'Study-')                 !== null);
+
+    // ── Advanced: back-reference (duplicate words) ─
+    test('Duplicate words "the the" detected',  madridDuplicateWords('the the problem')         === true);
+    test('No duplicate words passes',           madridDuplicateWords('the problem is clear')    === false);
+    test('Case-insensitive dupe "GO go" caught',madridDuplicateWords('GO go to class')          === true);
+
+    // ── Advanced: lookahead (not all digits) ──────
+    test('All-digits fails lookahead',          madridNotAllDigits('99999')                     === false);
+    test('Mixed "Study 101" passes lookahead',  madridNotAllDigits('Study 101')                 === true);
+
+    // ── Safe regex compiler ───────────────────────
+    test('Valid regex compiles',                juventusCompile('study')                        !== null);
+    test('Invalid regex returns null',          juventusCompile('[unclosed')                    === null);
+    test('Empty string returns null',           juventusCompile('')                             === null);
+    test('Case-insensitive flag respected',     juventusCompile('study', 'i')?.flags.includes('i') === true);
+
+    // ── Highlight ─────────────────────────────────
+    test('Highlight wraps match in <mark>',     juventusHighlight('Study session', /study/i).includes('<mark>Study</mark>'));
+    test('No match: no <mark> added',          !juventusHighlight('Lunch break',  /study/i).includes('<mark>'));
+    test('HTML chars are escaped safely',       juventusHighlight('<script>', null).includes('&lt;script&gt;'));
+    test('Multiple matches all highlighted',    (juventusHighlight('ab ab', /ab/g).match(/<mark>/g) || []).length === 2);
+
+    // ── Render output ─────────────────────────────
+    const out = document.getElementById('output');
+
+    const passed = results.filter(r => r.passed).length;
+    const total  = results.length;
+
+    const summary = document.createElement('p');
+    summary.className = 'summary ' + (passed === total ? 'pass' : 'fail');
+    summary.textContent = `${passed} / ${total} tests passed`;
+    out.appendChild(summary);
+
+    const groups = {
+      'Description': results.slice(0, 6),
+      'Duration':    results.slice(6, 13),
+      'Date':        results.slice(13, 17),
+      'Tag':         results.slice(17, 22),
+      'Advanced — back-reference': results.slice(22, 25),
+      'Advanced — lookahead':      results.slice(25, 27),
+      'Safe Regex Compiler':       results.slice(27, 31),
+      'Highlight':                 results.slice(31)
+    };
+
+    for (const [groupName, items] of Object.entries(groups)) {
+      const h2 = document.createElement('h2');
+      h2.textContent = groupName;
+      out.appendChild(h2);
+
+      items.forEach(r => {
+        const p = document.createElement('p');
+        p.className = 'test ' + (r.passed ? 'pass' : 'fail');
+        p.textContent = `${r.passed ? 'PASS' : 'FAIL'} ${r.label}`;
+        out.appendChild(p);
+      });
+    }
+  </script>
+</body>
+</html>
+

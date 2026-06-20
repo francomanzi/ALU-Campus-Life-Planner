@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings — Campus Life Planner</title>
+  <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="arsenal-header" role="banner">
+    <div class="arsenal-header-inner">
+      <h1 class="arsenal-logo">Campus Life Planner</h1>
+      <button class="napoli-toggle" id="napoli-toggle"
+        aria-controls="liverpool-nav"
+        aria-expanded="false"
+        aria-label="Toggle navigation menu">
+        <span aria-hidden="true">Menu</span>
+      </button>
+      <nav id="liverpool-nav" class="liverpool-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="index.html">Planner</a></li>
+          <li><a href="settings.html">Settings</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="arsenal-main">
+
+    <section id="settings" class="porto-section" aria-labelledby="h2-settings">
+      <h2 id="h2-settings">Settings</h2>
+
+      <div class="inter-block">
+        <h3>Import / Export</h3>
+        <div class="inter-btns">
+          <button class="milan-btn milan-secondary" id="export-btn">Export JSON</button>
+          <label class="milan-btn milan-secondary" for="import-file">
+            Import JSON
+            <input type="file" id="import-file" accept=".json"
+              aria-label="Choose JSON file to import"
+              style="position:absolute;opacity:0;width:1px;height:1px;" />
+          </label>
+        </div>
+        <p id="import-msg" role="status" aria-live="polite"></p>
+      </div>
+
+      <div class="inter-block">
+        <h3>Data</h3>
+        <div class="inter-btns">
+          <button class="milan-btn milan-danger" id="reset-btn">Clear All Records</button>
+          <button class="milan-btn milan-secondary" id="seed-btn">Load Sample Data</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="arsenal-footer" role="contentinfo">
+    <p>Campus Life Planner &copy; 2026</p>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
+

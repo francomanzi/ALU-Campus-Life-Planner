@@ -1,0 +1,505 @@
+/* =============================================
+   CAMPUS LIFE PLANNER — main.css
+   Mobile-first. Breakpoints: 360 | 768 | 1024
+   ============================================= */
+
+/* === Variables === */
+:root {
+  --navy:   #1e3a5f;
+  --blue:   #2980b9;
+  --light:  #f4f6f9;
+  --white:  #ffffff;
+  --text:   #222222;
+  --muted:  #666666;
+  --border: #d0d5dd;
+  --red:    #c0392b;
+  --green:  #1e8a4c;
+  --radius: 6px;
+  --shadow: 0 1px 4px rgba(0,0,0,0.1);
+  --trans:  0.2s ease;
+}
+
+/* === Reset === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: system-ui, -apple-system, sans-serif; background: var(--light); color: var(--text); line-height: 1.6; font-size: 1rem; }
+ul { list-style: none; }
+a { color: var(--blue); }
+img { max-width: 100%; }
+
+/* === Accessibility helpers === */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--navy);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  z-index: 999;
+  text-decoration: none;
+  font-weight: 600;
+  transition: top var(--trans);
+}
+.skip-link:focus { top: 0.5rem; }
+
+:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* === Arsenal Header === */
+.arsenal-header {
+  background: var(--navy);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow);
+}
+.arsenal-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
+  gap: 0.5rem;
+}
+.arsenal-logo {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Napoli Toggle (mobile menu button) */
+.napoli-toggle {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #fff;
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+.napoli-toggle:focus-visible { outline: 3px solid #fff; }
+
+/* Liverpool Nav */
+.liverpool-nav { width: 100%; }
+.liverpool-nav ul {
+  display: none;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.4rem 0;
+}
+.liverpool-nav.open ul { display: flex; }
+.liverpool-nav a {
+  display: block;
+  color: rgba(255,255,255,0.9);
+  text-decoration: none;
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--radius);
+  transition: background var(--trans);
+}
+.liverpool-nav a:hover,
+.liverpool-nav a:focus { background: rgba(255,255,255,0.15); color: #fff; }
+
+/* === Arsenal Main === */
+.arsenal-main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* === Porto Sections === */
+.porto-section {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow);
+}
+.porto-section h2 {
+  font-size: 1.3rem;
+  color: var(--navy);
+  margin-bottom: 0.9rem;
+  padding-bottom: 0.4rem;
+  border-bottom: none;
+}
+
+/* Make the main About section visually larger than others */
+#about {
+  padding: 1.75rem;
+}
+#about h2 {
+  font-size: 1.6rem;
+}
+#about p {
+  font-size: 1.05rem;
+}
+
+/* Contact + Location side-by-side on wider screens */
+.about-meta { display: block; gap: 1rem; }
+@media (min-width: 768px) {
+  .about-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .about-meta .porto-section { margin-bottom: 0; }
+}
+.porto-section h3 {
+  font-size: 1rem;
+  color: var(--navy);
+  margin: 1rem 0 0.5rem;
+}
+.porto-section h3:first-child { margin-top: 0; }
+
+/* About contact */
+.porto-contact ul { margin-top: 0.35rem; }
+.porto-contact li { margin: 0.25rem 0; }
+/* Contact layout styles removed (reverted to simpler markup) */
+
+/* === Dortmund Dashboard === */
+.dortmund-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.madrid-card {
+  flex: 1 1 100px;
+  background: var(--light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.7rem 1rem;
+}
+.madrid-label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.madrid-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.2;
+}
+
+/* Bar chart */
+.dortmund-chart-box { margin-bottom: 1rem; }
+.dortmund-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 80px;
+  margin-top: 0.5rem;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 0;
+}
+.dortmund-extra { display: grid; gap: 0.8rem; }
+.dortmund-extra h3 { margin: 0 0 0.4rem; font-size: 1rem; color: var(--navy); }
+#upcoming-list, #activity-list { list-style: none; padding-left: 0; margin: 0; }
+#upcoming-list li, #activity-list li { padding: 0.45rem 0; border-bottom: 1px solid var(--border); }
+.muted { color: var(--muted); font-size: 0.9rem; }
+.tag-break { display:flex; justify-content:space-between; padding:0.3rem 0; border-bottom:1px dashed var(--border); }
+.dortmund-bar-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  height: 100%;
+  justify-content: flex-end;
+}
+.dortmund-bar {
+  width: 100%;
+  background: var(--blue);
+  border-radius: 3px 3px 0 0;
+  min-height: 2px;
+  transition: height 0.4s ease;
+}
+.dortmund-bar-date {
+  font-size: 0.6rem;
+  color: var(--muted);
+  margin-top: 0.2rem;
+  white-space: nowrap;
+}
+
+/* Weekly cap */
+.dortmund-cap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+.dortmund-cap label { font-weight: 600; font-size: 0.9rem; }
+#milan-cap {
+  width: 80px;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+}
+#milan-cap-msg { font-size: 0.85rem; }
+#milan-cap-msg.over { color: var(--red); font-weight: 600; }
+#milan-cap-msg.under { color: var(--green); }
+
+/* === Barcelona Form === */
+.barcelona-wrap {
+  background: var(--light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  animation: fadeIn 0.25s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Chelsea fields */
+.chelsea-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-bottom: 0.75rem;
+}
+.chelsea-field label {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+.chelsea-field input {
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  background: var(--white);
+  transition: border-color var(--trans);
+}
+.chelsea-field input:focus { border-color: var(--blue); }
+.chelsea-field input[aria-invalid="true"] { border-color: var(--red); }
+.chelsea-err {
+  font-size: 0.8rem;
+  color: var(--red);
+  min-height: 1.1rem;
+}
+.chelsea-hint {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.chelsea-btns {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+/* === Milan Buttons === */
+.milan-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.45rem 0.9rem;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: opacity var(--trans), transform 0.1s ease;
+  text-decoration: none;
+}
+.milan-btn:hover { opacity: 0.85; }
+.milan-btn:active { transform: scale(0.97); }
+
+.milan-primary   { background: var(--blue);  color: #fff; }
+.milan-secondary { background: #e9ecef; color: var(--text); border: 1px solid var(--border); }
+.milan-danger    { background: var(--red);   color: #fff; }
+
+.milan-sort {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 0.8rem;
+  padding: 0.3rem 0.65rem;
+}
+.milan-sort[aria-pressed="true"] {
+  background: var(--navy);
+  color: #fff;
+  border-color: var(--navy);
+}
+
+.milan-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem 0.4rem;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  line-height: 1;
+  transition: background var(--trans);
+  color: var(--text);
+}
+.milan-icon:hover { background: #e9ecef; }
+
+/* === Juventus Search & Sort === */
+.juventus-search {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+.juventus-search label:first-child { font-weight: 600; font-size: 0.875rem; }
+#juventus-input {
+  flex: 1;
+  min-width: 140px;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+}
+.juventus-case { font-size: 0.85rem; display: flex; align-items: center; gap: 0.3rem; }
+
+.juventus-sort {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+}
+
+/* === Chelsea Table === */
+.juventus-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.chelsea-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+.chelsea-table th {
+  background: var(--navy);
+  color: #fff;
+  padding: 0.55rem 0.75rem;
+  text-align: left;
+  white-space: nowrap;
+}
+.chelsea-table td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.chelsea-table tbody tr:last-child td { border-bottom: none; }
+.chelsea-table tbody tr:hover td { background: #f0f4f8; }
+.chelsea-table mark {
+  background: #ffe082;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+/* Tag badge */
+.inter-tag {
+  display: inline-block;
+  padding: 0.1rem 0.55rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  background: #dbeafe;
+  color: #1e3a5f;
+  font-weight: 500;
+}
+
+/* Row actions */
+.santos-actions { display: flex; gap: 0.25rem; white-space: nowrap; }
+
+#empty-msg {
+  padding: 1.25rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* === Inter Settings === */
+.inter-block { margin-bottom: 1.25rem; }
+.inter-btns { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+#import-msg { font-size: 0.85rem; margin-top: 0.4rem; display: block; }
+
+/* === Santos Modal === */
+.santos-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 200;
+}
+.santos-backdrop[hidden] { display: none; }
+
+.santos-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  max-width: 340px;
+  width: 90%;
+  z-index: 201;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  animation: fadeIn 0.2s ease;
+}
+.santos-modal[hidden] { display: none; }
+.santos-modal h2 { font-size: 1.1rem; margin-bottom: 0.6rem; }
+.santos-modal p  { font-size: 0.9rem; margin-bottom: 1rem; color: var(--muted); }
+.santos-btns { display: flex; gap: 0.5rem; }
+
+/* === Arsenal Footer === */
+.arsenal-footer {
+  text-align: center;
+  padding: 1.25rem 1rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* =============================================
+   Tablet — 768px
+   ============================================= */
+@media (min-width: 768px) {
+  .napoli-toggle { display: none; }
+  .liverpool-nav { width: auto; }
+  .liverpool-nav ul {
+    display: flex !important;
+    flex-direction: row;
+    padding: 0;
+    gap: 0.25rem;
+  }
+  .arsenal-main { padding: 1.5rem; }
+  .porto-section { padding: 1.5rem; }
+  .barcelona-form { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.25rem; }
+  .chelsea-btns { grid-column: span 2; }
+}
+
+/* =============================================
+   Desktop — 1024px
+   ============================================= */
+@media (min-width: 1024px) {
+  .arsenal-main { padding: 2rem 1.5rem; }
+  .porto-section { padding: 2rem; }
+  .madrid-card { flex: 1 1 140px; }
+  .juventus-search { flex-wrap: nowrap; }
+}
+

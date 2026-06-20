@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Campus Life Planner</title>
+  <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="arsenal-header" role="banner">
+    <div class="arsenal-header-inner">
+      <h1 class="arsenal-logo">Campus Life Planner</h1>
+      <button class="napoli-toggle" id="napoli-toggle"
+        aria-controls="liverpool-nav"
+        aria-expanded="false"
+        aria-label="Toggle navigation menu">
+        <span aria-hidden="true">Menu</span>
+      </button>
+      <nav id="liverpool-nav" class="liverpool-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="index.html">Planner</a></li>
+          <li><a href="settings.html">Settings</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="arsenal-main">
+
+    <section id="about" class="porto-section" aria-labelledby="h2-about">
+      <h2 id="h2-about">About our Campus Life Planner</h2>
+      <p>Track your campus tasks, study sessions, and events throughout the semester. Add, edit, search, and export your records — all in the browser.</p>
+      <p>Take control of your academic life and never miss an important event again.</p>
+      <!-- contact moved to its own section -->
+    </section>
+
+    <!-- View Events link -->
+    <section id="view-events" class="porto-section" aria-labelledby="h2-view-events">
+      <h2 id="h2-view-events">View Events</h2>
+      <p>To see your posted events and tasks, go to the Dashboard.</p>
+      <p><a href="dashboard.html" class="milan-btn milan-primary" aria-label="Open Dashboard to view events">Open Dashboard</a></p>
+    </section>
+
+    <div class="about-meta">
+      <!-- Contact -->
+      <section id="contact" class="porto-section" aria-labelledby="h2-contact">
+        <h2 id="h2-contact">Contact</h2>
+        <p>Phone: <a href="tel:0788454545">0788454545</a></p>
+        <p>Email: <a href="mailto:d.manzi1@alustudent.com">d.manzi1@alustudent.com</a></p>
+        <p>GitHub: <a href="https://github.com/francomanzi" target="_blank" rel="noopener noreferrer">github.com/francomanzi</a></p>
+      </section>
+
+      <!-- Location -->
+      <section id="location" class="porto-section" aria-labelledby="h2-location">
+        <h2 id="h2-location">Location</h2>
+        <p>Kigali</p>
+        <p>Bumbogo</p>
+      </section>
+    </div>
+
+  </main>
+
+  <footer class="arsenal-footer" role="contentinfo">
+    <p>Campus Life Planner &copy; 2026</p>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
+

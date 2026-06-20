@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campus Life Planner</title>
+  <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="arsenal-header" role="banner">
+    <div class="arsenal-header-inner">
+      <h1 class="arsenal-logo">Campus Life Planner</h1>
+      <button class="napoli-toggle" id="napoli-toggle"
+        aria-controls="liverpool-nav"
+        aria-expanded="false"
+        aria-label="Toggle navigation menu">
+        <span aria-hidden="true">Menu</span>
+      </button>
+      <nav id="liverpool-nav" class="liverpool-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="index.html">Planner</a></li>
+          <li><a href="settings.html">Settings</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="arsenal-main">
+
+    <!-- Planner (single-purpose page) -->
+    <section id="planner" class="porto-section" aria-labelledby="h2-planner">
+      <h2 id="h2-planner">Planner</h2>
+
+      <!-- Form -->
+      <div class="barcelona-wrap">
+        <h3 id="barcelona-title">Add Event / Task</h3>
+        <form class="barcelona-form" id="barcelona-form" novalidate aria-labelledby="barcelona-title">
+          <input type="hidden" id="edit-id" />
+
+          <div class="chelsea-field">
+            <label for="f-desc">Description <span aria-hidden="true">*</span></label>
+            <input type="text" id="f-desc" name="description" required
+              autocomplete="off"
+              aria-required="true"
+              aria-describedby="e-desc"
+              placeholder="e.g. Skills lab" />
+            <span class="chelsea-err" id="e-desc" role="alert" aria-live="polite"></span>
+          </div>
+
+          <div class="chelsea-field">
+            <label for="f-duration">Duration (hours) <span aria-hidden="true">*</span></label>
+            <input type="text" id="f-duration" name="duration" required
+              aria-required="true"
+              aria-describedby="e-duration"
+              placeholder="e.g. 1.5" />
+            <span class="chelsea-err" id="e-duration" role="alert" aria-live="polite"></span>
+          </div>
+
+          <div class="chelsea-field">
+            <label for="f-date">Date <span aria-hidden="true">*</span></label>
+            <input type="date" id="f-date" name="date" required
+              aria-required="true"
+              aria-describedby="e-date" />
+            <span class="chelsea-err" id="e-date" role="alert" aria-live="polite"></span>
+          </div>
+
+          <div class="chelsea-field">
+            <label for="f-tag">Tag <span aria-hidden="true">*</span></label>
+            <input type="text" id="f-tag" name="tag" required
+              aria-required="true"
+              aria-describedby="e-tag hint-tag"
+              placeholder="e.g. Study" />
+            <span class="chelsea-err" id="e-tag" role="alert" aria-live="polite"></span>
+          </div>
+
+          <div class="chelsea-btns">
+            <button type="submit" class="milan-btn milan-primary" id="submit-btn">Add Record</button>
+            <button type="button" class="milan-btn milan-secondary" id="cancel-btn" hidden>Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Records -->
+      <div class="juventus-wrap">
+        <h3>Records</h3>
+
+        <div class="juventus-search">
+          <label for="juventus-input">Search</label>
+          <input type="text" id="juventus-input"
+            autocomplete="off"
+            placeholder="e.g. study|lab"
+            aria-describedby="juventus-hint" />
+          <label class="juventus-case">
+            <input type="checkbox" id="case-toggle" /> Case sensitive
+          </label>
+        </div>
+
+        <div class="juventus-sort" role="group" aria-label="Sort records">
+          <span>Sort by:</span>
+          <button class="milan-btn milan-sort" data-sort="date" aria-pressed="false">Date</button>
+          <button class="milan-btn milan-sort" data-sort="description" aria-pressed="false">Name</button>
+          <button class="milan-btn milan-sort" data-sort="duration" aria-pressed="false">Duration</button>
+        </div>
+
+        <div class="juventus-table-wrap" role="region" aria-label="Records table">
+          <table class="chelsea-table" id="chelsea-table" aria-label="Campus records">
+            <thead>
+              <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Hours</th>
+                <th scope="col">Date</th>
+                <th scope="col">Tag</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="chelsea-tbody"></tbody>
+          </table>
+          <p id="empty-msg" hidden>No records yet. Add your first event above!</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="arsenal-footer" role="contentinfo">
+    <p>Campus Life Planner &copy; 2025</p>
+  </footer>
+
+  <!-- ARIA live regions (screen reader only) -->
+  <div id="global-status" role="status" aria-live="polite" class="sr-only"></div>
+  <div id="global-alert" role="alert" aria-live="assertive" class="sr-only"></div>
+
+  <!-- Delete confirm modal -->
+  <div class="santos-backdrop" id="santos-backdrop" hidden aria-hidden="true"></div>
+  <div class="santos-modal" id="santos-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="santos-title"
+    hidden>
+    <h2 id="santos-title">Confirm Delete</h2>
+    <p>Are you sure you want to delete this record? This cannot be undone.</p>
+    <div class="santos-btns">
+      <button class="milan-btn milan-danger" id="confirm-delete">Delete</button>
+      <button class="milan-btn milan-secondary" id="cancel-delete">Cancel</button>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
+
