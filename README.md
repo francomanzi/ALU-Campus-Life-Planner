@@ -7,6 +7,7 @@ A concise, accessible web app to track campus tasks, study sessions, and events.
 ## Live demo
 
 The site is published via GitHub Pages : https://francomanzi.github.io/ALU-Campus-Life-Planner/about.html
+Video Link: https://youtu.be/wvKg563kG58
 
 
  Open the URL in your browser.
